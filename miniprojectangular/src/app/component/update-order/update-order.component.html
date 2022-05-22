@@ -1,0 +1,50 @@
+<br />
+<div class="container border border-info" width="200px">
+    <div [hidden]="submitted" style="width: 600px;" class="align_center">
+        <h3>Update Order</h3>
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-group">
+                <label for="name"> Order Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="order.orderName"
+                    name="orderName" minlength="4" #orderName="ngModel">
+            </div>
+
+            <div *ngIf="orderName.invalid && (orderName.dirty || orderName.touched)" class="alert alert-danger">
+
+                <div *ngIf="orderName.errors?.['required']">
+                    orderName is required.
+                </div>
+                <div *ngIf="orderName.errors?.['minlength']">
+                    orderName must be at least 4 characters long.
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="form-group">
+                <label for="name">Price</label>
+                <input type="text" class="form-control" id="price" required [(ngModel)]="order.orderPrice"
+                    name="orderPrice" #orderPrice="ngModel">
+            </div>
+
+            <div *ngIf="orderPrice.invalid && (orderPrice.dirty || orderPrice.touched)" class="alert alert-danger">
+
+                <div *ngIf="orderPrice.errors?.['required']">
+                    orderPrice is required.
+                </div>
+
+            </div>
+
+            <br />
+
+
+
+
+            <button type="submit" class="btn btn-success" [disabled]="contactForm.form.invalid">Submit</button>
+        </form>
+        <br>
+        <br>
+        <button (click)="ordersList()" class="btn btn-primary float-right">Back to orders List</button><br>
+    </div>
+</div>

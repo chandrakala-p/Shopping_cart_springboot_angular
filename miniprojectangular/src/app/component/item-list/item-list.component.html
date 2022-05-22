@@ -1,0 +1,41 @@
+<a routerLink="/orders"><input type="button" class="btn btn-success" value="orders List" /> </a>
+<a routerLink="/users"><input type="button" class="btn btn-dark" value="users List" /> </a>
+
+<div class=" border border-class">
+    <h2 class="h2-class">Item List</h2>
+</div>
+
+
+
+<button mat-raised-button class="btn btn-info " (click)="addItem()">Add</button>
+<!-- style="float: right; margin:10px; -->
+<div class="col-md-3  " style="margin:10px ">
+    <form>
+        <input type="text" [(ngModel)]="itemName" class="form-control " (input)="search()" name="itemName"
+            placeholder="search itemName">
+
+    </form>
+</div>
+
+
+<table class="table-bordered  ">
+    <tr>
+        <th> item id </th>
+        <th>item name</th>
+        <th>item Price</th>
+        <th>Delete item</th>
+        <th>Update item</th>
+        <th> item Details</th>
+    </tr>
+    <!-- <tr *ngFor="let item of empList"> -->
+    <tr *ngFor="let item of items">
+        <td> {{item.itemId}} </td>
+        <td> {{item.itemName}} </td>
+        <td>{{item.itemPrice}} </td>
+
+        <td><button class="btn btn-danger" (click)="deleteItem(item.itemId)">Delete</button></td>
+        <td><button class="btn btn-warning" (click)="editItem(item.itemId)">Update</button></td>
+        <td><button class="btn btn-info" (click)="itemDetails(item.itemId)">Details</button></td>
+
+    </tr>
+</table>

@@ -1,0 +1,45 @@
+<br />
+<div class="container border border-info" width="200px">
+    <div [hidden]="submitted" style="width: 600px;" class="align_center">
+        <h3>Update Item</h3>
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-group">
+                <label for="name">Item Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="item.itemName" name="itemName"
+                    minlength="4" #itemName="ngModel">
+            </div>
+
+            <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)" class="alert alert-danger">
+
+                <div *ngIf="itemName.errors?.['required']">
+                    itemName is required.
+                </div>
+                <div *ngIf="itemName.errors?.['minlength']">
+                    itemName must be at least 4 characters long.
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <label for="name">Price</label>
+                <input type="text" class="form-control" id="price" required [(ngModel)]="item.itemPrice"
+                    #itemPrice="ngModel" name="itemPrice">
+            </div>
+            <div *ngIf="itemPrice.invalid && (itemPrice.dirty || itemPrice.touched)" class="alert alert-danger">
+
+                <div *ngIf="itemPrice.errors?.['required']">
+                    itemPrice is required.
+                </div>
+
+            </div>
+
+            <br />
+
+            <button type="submit" class="btn btn-success" [disabled]="contactForm.form.invalid">Submit</button>
+        </form>
+        <br>
+        <br>
+        <button (click)="itemsList()" class="btn btn-primary float-right">Back to items List</button><br>
+    </div>
+</div>

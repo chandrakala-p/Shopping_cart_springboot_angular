@@ -1,0 +1,41 @@
+<a routerLink="/orders"><input type="button" class="btn btn-success" value="order List" /> </a>
+<a routerLink="/items"><input type="button" class="btn btn-dark" value="Item List" /> </a>
+
+<div class=" border border-class">
+    <h2 class="h2-class">User List</h2>
+</div>
+
+
+
+<button mat-raised-button class="btn btn-info " (click)="addUser()">Add</button>
+<!-- style="float: right; margin:10px; -->
+<div class="col-md-3  " style="margin:10px ">
+    <form>
+        <input type="text" [(ngModel)]="userName" class="form-control " (input)="search()" name="userName"
+            placeholder="search userName">
+
+    </form>
+</div>
+
+
+<table class=" table-bordered  ">
+    <tr>
+        <th>id </th>
+        <th>username</th>
+        <th>password</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Details</th>
+    </tr>
+    <!-- <tr *ngFor="let item of empList"> -->
+    <tr *ngFor="let user of users">
+        <td> {{user.id}} </td>
+        <td> {{user.userName}} </td>
+        <td>{{user.password}} </td>
+
+        <td><button class="btn btn-danger" (click)=" deleteUser(user.id)">Delete</button></td>
+        <td><button class="btn btn-warning" (click)="editUser(user.id)">Update</button></td>
+        <td><button class="btn btn-info" (click)="userDetails(user.id)">Details</button></td>
+
+    </tr>
+</table>

@@ -1,0 +1,18 @@
+<br />
+<div class="container border border-info" width="200px">
+    <h2>Orders Details</h2>
+    <hr />
+    <div *ngIf="order">
+        <div>
+            <label><b>order Name: </b></label> {{order.orderName}}
+        </div>
+        <div>
+            <label><b>Price </b></label> {{order.orderPrice}}
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <button (click)=" ordersList()" class="btn btn-primary">Back to orders List</button><br>
+</div>

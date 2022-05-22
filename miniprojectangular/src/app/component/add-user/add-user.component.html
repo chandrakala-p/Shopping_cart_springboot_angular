@@ -1,0 +1,58 @@
+<br />
+<div class="container border border-info" width="200px">
+    <h3>Create user</h3>
+    <div [hidden]="submitted" style="width: 400px;">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+
+            <div class="form-group">
+                <label for="userName"> Name</label>
+                <input type="text" class="form-control" id="userName" required [(ngModel)]="user.userName" minlength="4"
+                    name="userName" #userName="ngModel">
+            </div>
+
+
+            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+
+                <div *ngIf="userName.errors?.['required']">
+                    Name is required.
+                </div>
+                <div *ngIf="userName.errors?.['minlength']">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="form-group">
+                <label for="name">password</label>
+                <input type="password" class="form-control" id="email" required [(ngModel)]="user.password"
+                    name="password" #password="ngModel" minlength="4">
+            </div>
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                <div *ngIf="password.errors?.['required']">
+                    password is required.
+                </div>
+                <div *ngIf="password.errors?.['minlength']">
+                    password must be at least 4 characters long.
+                </div>
+            </div>
+
+            <br />
+
+
+            <button type="submit" class="btn btn-success" [disabled]="contactForm.form.invalid">Submit</button>
+        </form>
+    </div>
+
+    <div [hidden]="!submitted">
+        <h4>You submitted successfully!</h4>
+
+    </div>
+    <br>
+    <br>
+    <button (click)=" usersList()" class="btn btn-primary">Back to Users List</button><br>
+</div>
